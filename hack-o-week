@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Development Bootcamp Landing Page</title>
+  <meta name="description" content="Become a job-ready web developer in 12 weeks with live mentorship, real projects, placement support, and a portfolio-first curriculum." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2.25rem, 1.3rem + 3vw, 4.5rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+
+      --color-bg: #f6f7fb;
+      --color-surface: #ffffff;
+      --color-surface-2: #eef2ff;
+      --color-surface-offset: #e8edf8;
+      --color-border: rgba(15, 23, 42, 0.1);
+      --color-text: #0f172a;
+      --color-text-muted: #475569;
+      --color-text-faint: #64748b;
+      --color-primary: #2563eb;
+      --color-primary-hover: #1d4ed8;
+      --color-primary-soft: rgba(37, 99, 235, 0.12);
+      --color-accent: #0f172a;
+      --color-success: #166534;
+      --radius-sm: 0.5rem;
+      --radius-md: 0.9rem;
+      --radius-lg: 1.25rem;
+      --radius-xl: 1.75rem;
+      --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.1);
+      --font-body: 'General Sans', Inter, sans-serif;
+      --font-display: 'Cabinet Grotesk', 'General Sans', sans-serif;
+      --content: min(1120px, calc(100% - 2rem));
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #020617;
+      --color-surface: #0f172a;
+      --color-surface-2: #111c35;
+      --color-surface-offset: #17233e;
+      --color-border: rgba(148, 163, 184, 0.18);
+      --color-text: #e2e8f0;
+      --color-text-muted: #cbd5e1;
+      --color-text-faint: #94a3b8;
+      --color-primary: #60a5fa;
+      --color-primary-hover: #93c5fd;
+      --color-primary-soft: rgba(96, 165, 250, 0.14);
+      --color-accent: #f8fafc;
+      --color-success: #4ade80;
+      --shadow-sm: 0 8px 24px rgba(2, 6, 23, 0.35);
+      --shadow-md: 0 18px 50px rgba(2, 6, 23, 0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top right, var(--color-primary-soft), transparent 22%),
+        radial-gradient(circle at left center, rgba(56, 189, 248, 0.08), transparent 20%),
+        var(--color-bg);
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; border-radius: var(--radius-sm); }
+    .skip-link {
+      position: absolute; left: var(--space-4); top: -3rem; background: var(--color-primary); color: white;
+      padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm); z-index: 100;
+    }
+    .skip-link:focus { top: var(--space-4); }
+
+    .container { width: var(--content); margin-inline: auto; }
+    .section { padding: clamp(var(--space-12), 10vw, 6rem) 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2); padding: 0.45rem 0.8rem;
+      border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-surface);
+      color: var(--color-text-muted); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 999px; background: var(--color-primary); }
+    .section-title {
+      font-family: var(--font-display); font-size: var(--text-xl); line-height: 1.08; letter-spacing: -0.03em;
+      max-width: 16ch; margin: var(--space-4) 0 var(--space-3);
+    }
+    .section-copy { color: var(--color-text-muted); max-width: 60ch; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 40; backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--color-bg) 82%, transparent); border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled { border-color: var(--color-border); }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+      min-height: 4.5rem;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 0.8rem; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .brand-mark {
+      width: 2.35rem; height: 2.35rem; border-radius: 0.8rem; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--color-primary), #38bdf8); color: white; box-shadow: var(--shadow-sm);
+    }
+    .brand-mark svg { width: 1.25rem; height: 1.25rem; }
+    .nav-links {
+      display: none; align-items: center; gap: var(--space-5); color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    .nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+    .btn {
+      min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.9rem 1.2rem; border-radius: 999px; font-size: var(--text-sm); font-weight: 600;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--color-primary); color: white; box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-border); }
+    .btn-ghost { border: 1px solid var(--color-border); color: var(--color-text); }
+    .theme-toggle {
+      width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--color-border); background: var(--color-surface);
+      display: grid; place-items: center;
+    }
+
+    .hero { padding-top: clamp(var(--space-10), 9vw, 6rem); }
+    .hero-grid {
+      display: grid; gap: var(--space-8); align-items: center;
+    }
+    .hero h1 {
+      font-family: var(--font-display); font-size: var(--text-2xl); line-height: 0.96; letter-spacing: -0.05em;
+      max-width: 10ch; margin: var(--space-4) 0;
+    }
+    .hero p { color: var(--color-text-muted); max-width: 58ch; }
+    .hero-actions, .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+    .hero-facts {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-8);
+    }
+    .fact-card {
+      padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+    }
+    .fact-card strong { display: block; font-size: 1.3rem; font-family: var(--font-display); }
+    .fact-card span { color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .hero-panel {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent), var(--color-surface));
+      border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-5); box-shadow: var(--shadow-md);
+    }
+    .mock-window {
+      border-radius: 1.2rem; overflow: hidden; border: 1px solid var(--color-border); background: var(--color-bg);
+    }
+    .window-bar {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1rem; border-bottom: 1px solid var(--color-border); background: var(--color-surface);
+    }
+    .dot { width: 0.7rem; height: 0.7rem; border-radius: 999px; background: #f87171; }
+    .dot:nth-child(2) { background: #fbbf24; }
+    .dot:nth-child(3) { background: #34d399; }
+    .code-grid { display: grid; gap: var(--space-4); padding: var(--space-4); }
+    .code-card {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-4);
+    }
+    .code-label { font-size: var(--text-xs); color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.08em; }
+    .code-line {
+      height: 0.7rem; border-radius: 999px; background: linear-gradient(90deg, var(--color-primary-soft), transparent);
+      margin-top: 0.9rem;
+    }
+    .code-line:nth-child(2) { width: 90%; }
+    .code-line:nth-child(3) { width: 72%; }
+    .code-line:nth-child(4) { width: 84%; }
+
+    .trust-bar {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-8);
+    }
+    .trust-item {
+      padding: var(--space-4); border-radius: var(--radius-lg); background: var(--color-surface); border: 1px solid var(--color-border);
+      text-align: center;
+    }
+    .trust-item strong { display: block; font-family: var(--font-display); font-size: 1.5rem; }
+    .trust-item span { color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .grid-2, .grid-3 { display: grid; gap: var(--space-4); }
+    .card {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl);
+      padding: var(--space-5); box-shadow: var(--shadow-sm); height: 100%;
+    }
+    .card h3 { font-size: var(--text-lg); line-height: 1.2; margin-bottom: var(--space-2); }
+    .card p, .card li { color: var(--color-text-muted); }
+    .list { list-style: none; display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+    .list li { display: flex; gap: var(--space-3); align-items: flex-start; }
+    .check {
+      flex: 0 0 auto; width: 1.35rem; height: 1.35rem; margin-top: 0.1rem; border-radius: 999px;
+      background: var(--color-primary-soft); color: var(--color-primary); display: grid; place-items: center; font-size: 0.85rem; font-weight: 700;
+    }
+
+    .curriculum-card { position: relative; overflow: hidden; }
+    .module-num {
+      display: inline-flex; width: 2rem; height: 2rem; border-radius: 999px; align-items: center; justify-content: center;
+      font-size: var(--text-sm); font-weight: 700; background: var(--color-primary-soft); color: var(--color-primary); margin-bottom: var(--space-3);
+    }
+    .meta-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+    .chip {
+      padding: 0.45rem 0.75rem; border-radius: 999px; font-size: var(--text-xs); background: var(--color-surface-2);
+      color: var(--color-text-muted); border: 1px solid var(--color-border);
+    }
+
+    .highlight {
+      display: grid; gap: var(--space-4); background: linear-gradient(135deg, var(--color-accent), #1e293b);
+      color: #f8fafc; border-radius: calc(var(--radius-xl) + 0.3rem); padding: clamp(var(--space-6), 6vw, var(--space-10));
+      box-shadow: var(--shadow-md);
+    }
+    .highlight p { color: rgba(248, 250, 252, 0.8); }
+    .highlight .chip { background: rgba(255,255,255,0.08); color: white; border-color: rgba(255,255,255,0.12); }
+
+    .instructor {
+      display: grid; gap: var(--space-5); align-items: center;
+    }
+    .instructor-visual {
+      background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface));
+      border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-6);
+      min-height: 320px; position: relative; overflow: hidden;
+    }
+    .avatar {
+      width: 6rem; height: 6rem; border-radius: 1.5rem; background: linear-gradient(135deg, var(--color-primary), #38bdf8);
+      display: grid; place-items: center; color: white; font-family: var(--font-display); font-size: 2rem; font-weight: 800;
+      margin-bottom: var(--space-4);
+    }
+    .quote {
+      position: relative; padding: var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface);
+      border: 1px solid var(--color-border);
+    }
+    .quote p { font-size: var(--text-base); color: var(--color-text); }
+    .quote footer { margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .pricing {
+      display: grid; gap: var(--space-4);
+    }
+    .price-box {
+      padding: clamp(var(--space-5), 5vw, var(--space-8)); border-radius: var(--radius-xl); border: 1px solid var(--color-border);
+      background: var(--color-surface); box-shadow: var(--shadow-md);
+    }
+    .price {
+      display: flex; align-items: baseline; gap: var(--space-2); margin: var(--space-4) 0 var(--space-2);
+      font-family: var(--font-display);
+    }
+    .price strong { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1; }
+    .price span { color: var(--color-text-muted); }
+    .form {
+      display: grid; gap: var(--space-3); margin-top: var(--space-5);
+    }
+    .field { display: grid; gap: 0.45rem; }
+    .field label { font-size: var(--text-sm); font-weight: 600; }
+    .field input, .field select {
+      min-height: 48px; width: 100%; padding: 0.9rem 1rem; border-radius: 0.9rem; border: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .note { font-size: var(--text-xs); color: var(--color-text-faint); }
+
+    .faq-list { display: grid; gap: var(--space-3); }
+    details {
+      background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5);
+    }
+    summary {
+      cursor: pointer; list-style: none; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+    }
+    summary::-webkit-details-marker { display: none; }
+    details p { margin-top: var(--space-3); color: var(--color-text-muted); }
+
+    .final-cta {
+      position: relative; overflow: hidden;
+    }
+
+    .site-footer {
+      padding: var(--space-8) 0 calc(var(--space-8) + 4.5rem); color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+
+    .mobile-sticky {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 0.8rem 1rem max(0.8rem, env(safe-area-inset-bottom));
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent); backdrop-filter: blur(14px); border-top: 1px solid var(--color-border);
+    }
+    .mobile-sticky .btn { width: 100%; }
+
+    @media (min-width: 760px) {
+      .nav-links { display: flex; }
+      .hero-grid, .instructor, .pricing, .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .trust-bar { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .mobile-sticky { display: none; }
+    }
+
+    @media (max-width: 759px) {
+      .nav .btn-secondary { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Bootcamp home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7h16M7 4v6m10-6v6M5 12l7 6 7-6"></path>
+          </svg>
+        </span>
+        <span>CodeLaunch Bootcamp</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#curriculum">Curriculum</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#mentor">Instructor</a>
+        <a href="#pricing">Fees</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+          <span aria-hidden="true">◐</span>
+        </button>
+        <a class="btn btn-secondary" href="#pricing">Download Syllabus</a>
+        <a class="btn btn-primary" href="#apply">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Live cohort starts 20 May</span>
+          <h1>Become a job-ready web developer in 12 weeks.</h1>
+          <p>Build real projects with HTML, CSS, JavaScript, React, Git, APIs, and deployment tools. Learn live from mentors, strengthen your portfolio, and prepare for internships or entry-level developer roles.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#apply">Apply Now</a>
+            <a class="btn btn-secondary" href="#curriculum">Download Syllabus</a>
+          </div>
+          <div class="hero-facts" aria-label="Quick facts">
+            <article class="fact-card">
+              <strong>12 weeks</strong>
+              <span>Weekend + evening live classes</span>
+            </article>
+            <article class="fact-card">
+              <strong>5 projects</strong>
+              <span>Portfolio-first, mentor reviewed</span>
+            </article>
+            <article class="fact-card">
+              <strong>Hybrid</strong>
+              <span>Online live + recorded support</span>
+            </article>
+            <article class="fact-card">
+              <strong>Career prep</strong>
+              <span>Resume, mock interviews, placement support</span>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Bootcamp preview">
+          <div class="mock-window">
+            <div class="window-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="code-grid">
+              <div class="code-card">
+                <div class="code-label">Module 01 — Foundations</div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+              </div>
+              <div class="code-card">
+                <div class="code-label">Project — Responsive landing page</div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+              </div>
+              <div class="code-card">
+                <div class="code-label">Career sprint — Resume + GitHub polish</div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+                <div class="code-line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="trust-bar" style="margin-top: 1rem;">
+            <div class="trust-item"><strong>4.8/5</strong><span>Learner rating</span></div>
+            <div class="trust-item"><strong>1,200+</strong><span>Alumni community</span></div>
+            <div class="trust-item"><strong>10+</strong><span>Live coding sessions</span></div>
+            <div class="trust-item"><strong>1:1</strong><span>Mock interview support</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="curriculum">
+      <div class="container">
+        <span class="eyebrow">Curriculum</span>
+        <h2 class="section-title">What students will build and learn.</h2>
+        <p class="section-copy">The structure below keeps the page focused on outcomes while still showing a clear module-by-module path for beginners and career switchers.</p>
+
+        <div class="grid-3" style="margin-top: 2rem;">
+          <article class="card curriculum-card">
+            <span class="module-num">1</span>
+            <h3>HTML, CSS, and responsive design</h3>
+            <p>Learn layout systems, semantic markup, flexbox, grid, accessibility basics, and mobile-first page building.</p>
+            <div class="meta-row"><span class="chip">2 weeks</span><span class="chip">Project: landing page</span></div>
+          </article>
+          <article class="card curriculum-card">
+            <span class="module-num">2</span>
+            <h3>JavaScript fundamentals and DOM</h3>
+            <p>Understand variables, functions, arrays, async basics, events, form handling, and UI interactions.</p>
+            <div class="meta-row"><span class="chip">2 weeks</span><span class="chip">Project: interactive app</span></div>
+          </article>
+          <article class="card curriculum-card">
+            <span class="module-num">3</span>
+            <h3>React, components, and state</h3>
+            <p>Build reusable interfaces, manage data flow, use hooks, and create polished front-end applications.</p>
+            <div class="meta-row"><span class="chip">3 weeks</span><span class="chip">Project: dashboard UI</span></div>
+          </article>
+          <article class="card curriculum-card">
+            <span class="module-num">4</span>
+            <h3>Git, GitHub, APIs, and deployment</h3>
+            <p>Work like a developer with version control, fetch APIs, debugging workflows, and Vercel or Netlify deployment.</p>
+            <div class="meta-row"><span class="chip">2 weeks</span><span class="chip">Project: API app</span></div>
+          </article>
+          <article class="card curriculum-card">
+            <span class="module-num">5</span>
+            <h3>Capstone portfolio project</h3>
+            <p>Create a complete portfolio-ready project with mentor reviews, documentation, and presentation feedback.</p>
+            <div class="meta-row"><span class="chip">2 weeks</span><span class="chip">Demo day</span></div>
+          </article>
+          <article class="card curriculum-card">
+            <span class="module-num">6</span>
+            <h3>Career readiness sprint</h3>
+            <p>Polish resume, LinkedIn, GitHub, communication skills, and interview answers for internships and junior roles.</p>
+            <div class="meta-row"><span class="chip">1 week</span><span class="chip">Mock interviews</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outcomes">
+      <div class="container grid-2">
+        <div>
+          <span class="eyebrow">Outcomes</span>
+          <h2 class="section-title">Sell the future result, not just the topics.</h2>
+          <p class="section-copy">This section turns the course into a career promise by emphasizing portfolio strength, confidence, mentorship, and job readiness.</p>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Graduate with 5 polished projects for your portfolio and GitHub.</span></li>
+            <li><span class="check">✓</span><span>Get resume reviews, LinkedIn feedback, and mock interview practice.</span></li>
+            <li><span class="check">✓</span><span>Learn with live coding sessions, mentor support, and weekly doubt clearing.</span></li>
+            <li><span class="check">✓</span><span>Receive certificate and placement assistance after successful completion.</span></li>
+          </ul>
+        </div>
+        <div class="highlight">
+          <span class="eyebrow" style="background: rgba(255,255,255,0.06); color: white; border-color: rgba(255,255,255,0.08);">Why this converts</span>
+          <h3 style="font-size: var(--text-xl); font-family: var(--font-display); line-height: 1.05;">Short, results-focused copy keeps the next step obvious.</h3>
+          <p>Use micro-CTAs through the page, place testimonials near action areas, and keep the lead form short so mobile users can act fast without friction.</p>
+          <div class="meta-row">
+            <span class="chip">Apply Now</span>
+            <span class="chip">Download Curriculum</span>
+            <span class="chip">Book a Free Counseling Call</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-us">
+      <div class="container">
+        <span class="eyebrow">Why choose us</span>
+        <h2 class="section-title">Built for students who need clarity, practice, and accountability.</h2>
+        <div class="grid-3" style="margin-top: 2rem;">
+          <article class="card">
+            <h3>Live mentor-led classes</h3>
+            <p>Every week mixes guided teaching with live coding so learners see real workflows instead of only slides or prerecorded lessons.</p>
+          </article>
+          <article class="card">
+            <h3>Project-first learning</h3>
+            <p>Each module ends with a practical build so the syllabus naturally turns into portfolio proof instead of passive note-taking.</p>
+          </article>
+          <article class="card">
+            <h3>Doubt support and feedback</h3>
+            <p>Students get code review checkpoints, community access, and quick support to reduce dropout and keep momentum high.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mentor">
+      <div class="container instructor">
+        <div class="instructor-visual">
+          <div class="avatar" aria-hidden="true">AK</div>
+          <h2 class="section-title" style="max-width: 12ch; margin-top: 0;">Meet your lead instructor.</h2>
+          <p class="section-copy">Aarav Kulkarni is a front-end engineer and mentor with 8+ years of experience building production interfaces, teaching cohorts, and reviewing junior portfolios.</p>
+          <div class="meta-row" style="margin-top: 1rem;">
+            <span class="chip">Ex-product engineer</span>
+            <span class="chip">2000+ hours mentored</span>
+            <span class="chip">React specialist</span>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Instructor credibility</span>
+          <h2 class="section-title">Trust grows faster when credentials are visible.</h2>
+          <p class="section-copy">Use this section for the real instructor profile, years of experience, projects, companies worked with, certifications, and teaching proof.</p>
+          <div class="quote" style="margin-top: 1.5rem;">
+            <p>“I joined with zero confidence in JavaScript. By the final week, I had deployed my portfolio and was comfortable explaining my projects in interviews.”</p>
+            <footer>Riya P. — Bootcamp graduate, internship offer in 6 weeks</footer>
+          </div>
+          <div class="quote" style="margin-top: 1rem;">
+            <p>“The best part was that every concept turned into a project. I never felt lost because feedback was specific and fast.”</p>
+            <footer>Manav S. — Student success story</footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container pricing">
+        <div class="price-box">
+          <span class="eyebrow">Fees and CTA</span>
+          <h2 class="section-title" style="max-width: 14ch;">Keep pricing clear and pair it with one direct next step.</h2>
+          <p class="section-copy">This block combines transparent pricing, bonus value, and a short form so the user does not need to search for the action.</p>
+          <div class="price">
+            <strong>₹24,999</strong>
+            <span>full program · EMI available</span>
+          </div>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Live classes, recordings, projects, and capstone mentoring.</span></li>
+            <li><span class="check">✓</span><span>Certificate, career support, and alumni community access.</span></li>
+            <li><span class="check">✓</span><span>Bonus workshops on freelancing, GitHub, and interview prep.</span></li>
+          </ul>
+        </div>
+
+        <div class="price-box" id="apply">
+          <h3 style="font-size: var(--text-lg);">Apply for the bootcamp</h3>
+          <p class="section-copy">Use a short form with 3 to 5 fields to reduce drop-off, especially on mobile devices.</p>
+          <form class="form">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Enter your name" />
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" placeholder="Enter your email" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" placeholder="Enter your phone" />
+            </div>
+            <div class="field">
+              <label for="interest">Course interest</label>
+              <select id="interest" name="interest">
+                <option>Web Development Bootcamp</option>
+                <option>Free counseling call</option>
+                <option>Download curriculum</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Start Your Web Dev Journey</button>
+            <p class="note">Demo form only — connect this to your backend, Google Form, or CRM endpoint.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title">Answer doubts before the final CTA.</h2>
+        <div class="faq-list" style="margin-top: 2rem;">
+          <details>
+            <summary>Is this bootcamp beginner friendly?<span>+</span></summary>
+            <p>Yes. The curriculum starts from HTML, CSS, and JavaScript basics, then gradually moves into React, APIs, deployment, and portfolio building.</p>
+          </details>
+          <details>
+            <summary>Will I build real projects?<span>+</span></summary>
+            <p>Yes. Students complete multiple guided and independent projects, including a final capstone that can be added to a portfolio.</p>
+          </details>
+          <details>
+            <summary>Do you provide placement support?<span>+</span></summary>
+            <p>Yes. The page includes resume reviews, mock interviews, GitHub polishing, and job-readiness support as part of the offer.</p>
+          </details>
+          <details>
+            <summary>Can I attend while in college or working?<span>+</span></summary>
+            <p>Yes. Evening and weekend live sessions make the format easier for students and working learners who need flexibility.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container highlight">
+        <span class="eyebrow" style="background: rgba(255,255,255,0.06); color: white; border-color: rgba(255,255,255,0.08);">Final CTA</span>
+        <h2 style="font-family: var(--font-display); font-size: var(--text-xl); line-height: 1.03; max-width: 12ch;">Make the next step obvious and easy to tap.</h2>
+        <p>Use this footer CTA to repeat the strongest promise, reinforce trust, and give users one clean decision: apply now or book a call.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="#apply">Apply Now</a>
+          <a class="btn btn-secondary" href="#pricing">Book a Free Counseling Call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="display:flex; flex-wrap:wrap; gap: 1rem; justify-content:space-between; align-items:center;">
+      <p>CodeLaunch Bootcamp — responsive single-page course landing page template.</p>
+      <p>Replace text, pricing, mentor details, and form action with your institute data.</p>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky">
+    <div class="container">
+      <a class="btn btn-primary" href="#apply">Apply Now</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const header = document.querySelector('.site-header');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      const syncToggle = () => {
+        toggle.innerHTML = theme === 'dark' ? '<span aria-hidden="true">☀</span>' : '<span aria-hidden="true">☾</span>';
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      };
+      syncToggle();
+
+      toggle.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        syncToggle();
+      });
+
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const btn = form.querySelector('button[type="submit"]');
+          const original = btn.textContent;
+          btn.textContent = 'Application Received';
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.disabled = false;
+          }, 2200);
+        });
+      });
+
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 12);
+      });
+    })();
+  </script>
+</body>
+</html>
